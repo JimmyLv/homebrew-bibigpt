@@ -19,21 +19,14 @@ class Bibigpt < Formula
   
   def install
     # Extract tarball
-    ohai "Extracting BibiGPT..."
     system "tar", "-xzf", cached_download
     
-    # Copy to Applications
-    if Dir.exist?("BibiGPT.app")
-      ohai "Installing to /Applications..."
-      cp_r "BibiGPT.app", "/Applications/"
-    else
-      raise "BibiGPT.app not found in archive"
-    end
+    # Use Homebrew's staged path instead of /Applications
+    prefix.install "BibiGPT.app"
     
     # Create CLI symlink
-    cli_path = "/Applications/BibiGPT.app/Contents/MacOS/BibiGPT"
+    cli_path = "#{prefix}/BibiGPT.app/Contents/MacOS/BibiGPT"
     if File.exist?(cli_path)
-      ohai "Creating bibi CLI symlink..."
       bin.install_symlink cli_path => "bibi"
     end
   end
