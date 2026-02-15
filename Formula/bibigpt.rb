@@ -1,5 +1,8 @@
 # BibiGPT Desktop - AI Video/Audio Summary Assistant
 # https://bibigpt.co
+
+require "os"
+
 class Bibigpt < Formula
   desc "BibiGPT - AI Video/Audio Summary Assistant"
   homepage "https://bibigpt.co"
@@ -12,9 +15,9 @@ class Bibigpt < Formula
   end
   
   # Auto-select URL based on architecture
-  if Hardware::CPU.arm?
+  if OS.mac? && Hardware::CPU.arm?
     url "https://bibigpt-apps.oss-cn-beijing.aliyuncs.com/desktop-releases/BibiGPT-4.252.4-darwin-aarch64.app.tar.gz"
-  else
+  elsif OS.mac?
     url "https://bibigpt-apps.oss-cn-beijing.aliyuncs.com/desktop-releases/BibiGPT-4.252.4-darwin-x86_64.app.tar.gz"
   end
   
