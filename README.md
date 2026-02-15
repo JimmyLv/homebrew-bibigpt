@@ -5,8 +5,7 @@ Homebrew Tap for BibiGPT - AI Video/Audio Summary Assistant
 ## Installation
 
 ```bash
-brew tap jimmylv/bibigpt
-brew install --cask bibigpt
+brew install --cask jimmylv/bibigpt/bibigpt
 ```
 
 This installs BibiGPT.app to `/Applications` and creates the `bibi` CLI command.
