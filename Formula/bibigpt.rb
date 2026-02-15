@@ -18,14 +18,23 @@ class Bibigpt < Formula
   license "MIT"
   
   def install
-    system "tar", "-xzf", Dir["*.tar.gz"].first if Dir["*.tar.gz"].any?
+    # Extract tarball
+    ohai "Extracting BibiGPT..."
+    system "tar", "-xzf", cached_download
     
-    # Find Applications folder
-    apps_dir = HOMEBREW_PREFIX/"Applications"
-    cp_r "BibiGPT.app", apps_dir if Dir.exist?("BibiGPT.app")
+    # Copy to Applications
+    if Dir.exist?("BibiGPT.app")
+      ohai "Installing to /Applications..."
+      cp_r "BibiGPT.app", "/Applications/"
+    else
+      raise "BibiGPT.app not found in archive"
+    end
     
-    # Create CLI symlink if exists
-    cli_path = "#{apps_dir}/BibiGPT.app/Contents/MacOS/BibiGPT"
-    bin.install_symlink cli_path => "bibi" if File.exist?(cli_path)
+    # Create CLI symlink
+    cli_path = "/Applications/BibiGPT.app/Contents/MacOS/BibiGPT"
+    if File.exist?(cli_path)
+      ohai "Creating bibi CLI symlink..."
+      bin.install_symlink cli_path => "bibi"
+    end
   end
 end
