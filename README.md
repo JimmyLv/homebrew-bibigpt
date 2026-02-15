@@ -2,12 +2,23 @@
 
 Homebrew Tap for BibiGPT - AI Video/Audio Summary Assistant
 
-## Installation
+## Installation (Recommended)
+
+```bash
+brew tap jimmylv/bibigpt
+brew install --cask bibigpt
+```
+
+This installs BibiGPT.app to `/Applications` and creates the `bibi` CLI command.
+
+## Alternative: Formula Installation
 
 ```bash
 brew tap jimmylv/bibigpt
 brew install bibigpt
 ```
+
+> Note: The formula installs to Homebrew's Cellar, not `/Applications`. Use the cask for standard macOS app installation.
 
 ## Usage
 
@@ -17,9 +28,8 @@ bibi --url https://www.bilibili.com/video/BVxxxxx
 bibi --file /path/to/video.mp4
 ```
 
-## Development
+## Updating
 
-To update the formula with the latest version:
-1. Check the latest release URL from https://bibigpt.co/download/desktop
-2. Calculate SHA256: `shasum -a 256 /path/to/download.dmg`
-3. Update the URL and sha256 in Formula/bibigpt.rb
+```bash
+brew upgrade --cask bibigpt
+```
