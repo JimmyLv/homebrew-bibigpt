@@ -1,7 +1,7 @@
 cask "bibigpt" do
   on_arm do
-    version "4.796.0"
-    sha256 "1e7f17108b8a391d393b6f42d902b51c13f5e7d8d1ba6d619a599f5de5a80aaa"
+    version "4.798.0"
+    sha256 "6682165efc883a4529bff6da2dbc7986dd3f475faee01991e8033413c4e2e6a3"
 
     url "https://bibigpt-apps.chatvid.ai/desktop-releases/BibiGPT-#{version}-darwin-aarch64.app.tar.gz"
 
