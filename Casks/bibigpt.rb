@@ -1,36 +1,39 @@
-# BibiGPT Desktop - AI Video/Audio Summary Assistant
-# https://bibigpt.co
-
 cask "bibigpt" do
-  version "4.796.0"
-
   on_arm do
+    version "4.796.0"
     sha256 "1e7f17108b8a391d393b6f42d902b51c13f5e7d8d1ba6d619a599f5de5a80aaa"
-    url "https://bibigpt-apps.oss-cn-beijing.aliyuncs.com/desktop-releases/BibiGPT-#{version}-darwin-aarch64.app.tar.gz"
-  end
 
-  # Intel 已不跟主发布流。cask version 升到 4.584.0 后 .app.tar.gz 被清掉 404；
-  # 钉死仍在 OSS 上的 Intel DMG，避免 brew 跟 version 插值到不存在的 tarball。
+    url "https://bibigpt-apps.chatvid.ai/desktop-releases/BibiGPT-#{version}-darwin-aarch64.app.tar.gz"
+
+    livecheck do
+      url "https://bibigpt-apps.chatvid.ai/desktop-releases/latest.json"
+      strategy :json do |json|
+        json["version"]
+      end
+    end
+  end
   on_intel do
-    sha256 "1acd39ed6395559970f3681e1623c3766abfaf091cb65618a4c52d3200b1da63"
-    url "https://bibigpt-apps.oss-cn-beijing.aliyuncs.com/desktop-releases/BibiGPT-4.449.0-darwin-x86_64.dmg"
-  end
+    version "4.754.1"
+    sha256 "0abc238c847c9591127bf939d32cdf966fa7d7d9de07036fd42ab59f330d6ff6"
 
-  name "BibiGPT"
-  desc "AI-powered video and audio content summarization"
-  homepage "https://bibigpt.co"
+    url "https://bibigpt-apps.chatvid.ai/desktop-releases/BibiGPT-#{version}-darwin-x86_64.dmg"
 
-  livecheck do
-    url "https://bibigpt-apps.oss-cn-beijing.aliyuncs.com/desktop-releases/latest.json"
-    strategy :json do |json|
-      json["version"]
+    livecheck do
+      url "https://bibigpt-apps.chatvid.ai/desktop-releases/latest-intel.json"
+      strategy :json do |json|
+        json["version"]
+      end
     end
   end
 
+  name "BibiGPT"
+  desc "AI-powered video and audio content summarisation"
+  homepage "https://bibigpt.co/"
+
   auto_updates true
+  depends_on :macos
 
   app "BibiGPT.app"
-
   binary "#{appdir}/BibiGPT.app/Contents/MacOS/BibiGPT", target: "bibi"
 
   zap trash: [
