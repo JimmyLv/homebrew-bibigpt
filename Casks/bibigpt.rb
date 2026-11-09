@@ -41,5 +41,6 @@ cask "bibigpt" do
     "~/Library/Caches/co.bibigpt.desktop",
     "~/Library/Preferences/co.bibigpt.desktop.plist",
     "~/Library/Saved Application State/co.bibigpt.desktop.savedState",
+    "~/Library/WebKit/co.bibigpt.desktop",
   ]
 end
