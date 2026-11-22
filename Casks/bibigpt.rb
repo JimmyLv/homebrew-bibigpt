@@ -27,7 +27,7 @@ cask "bibigpt" do
   end
 
   name "BibiGPT"
-  desc "AI-powered video and audio content summarisation"
+  desc "AI video and audio summariser"
   homepage "https://bibigpt.co/"
 
   auto_updates true
@@ -37,6 +37,7 @@ cask "bibigpt" do
   binary "#{appdir}/BibiGPT.app/Contents/MacOS/BibiGPT", target: "bibi"
 
   zap trash: [
+    "~/.local/bin/bibi",
     "~/Library/Application Support/co.bibigpt.desktop",
     "~/Library/Caches/co.bibigpt.desktop",
     "~/Library/Preferences/co.bibigpt.desktop.plist",
